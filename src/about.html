@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>Voting DApp Info</title>
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Custom CSS for the header/navbar */
+
+    /* Custom CSS for the header/navbar */
+    header {
+      height: 180px;
+      padding: 15px 30px;
+      background: linear-gradient(305deg, #ff5722, #e91e63);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      border-bottom-left-radius: 50px;
+      border-bottom-right-radius: 50px;
+      display: flex;
+      align-content: stretch;
+      flex-wrap: nowrap;
+      align-items: flex-end;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    .h2 {
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      /* Center align horizontally */
+      text-align: center;
+      /* Center align text */
+      font-family: "Arial", sans-serif;
+      /* Replace with your desired font */
+    }
+
+    .header-title {
+      font-size: 36px;
+      /* Adjust the font size as needed */
+      margin: 0;
+    }
+
+    footer {
+      flex-shrink: 0;
+      background-color: #ff5722;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+      margin-top: auto;
+      font-family: "Arial", sans-serif;
+      /* Replace with your desired font */
+      font-size: 14px;
+      /* Adjust the font size as needed */
+    }
+
+
+    /* CSS for the navigation bar */
+    ul.navbar {
+      list-style-type: none;
+      overflow: hidden;
+      background-color: transparent;
+      margin: 0;
+      padding: 0;
+      font-size: 25px;
+    }
+
+    ul.navbar li {
+      float: left;
+    }
+
+    ul.navbar li a {
+      display: block;
+      color: #fff;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    ul.navbar li a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 5px;
+    }
+
+    .navbar-nav .nav-link {
+      color: #fff;
+      font-size: 18px;
+      margin-left: 20px;
+      padding: 10px;
+      text-decoration: none;
+    }
+
+    .nav-item {
+      text-align: right;
+    }
+
+    /* New CSS for the footer */
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+    }
+
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .containers {
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .cards {
+      max-width: 650px;
+      text-align: center;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      border-radius: 5px;
+    }
+
+    .profile-image {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 50%;
+      transition: transform 0.3s;
+    }
+
+    .profile-image:hover {
+      transform: scale(1.1);
+    }
+
+    .cards h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .cards p {
+      font-size: 16px;
+      line-height: 1.5;
+      margin-bottom: 15px;
+    }
+
+    .cards p:last-child {
+      margin-bottom: 0;
+    }
+
+ 
+
+  </style>
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+  <div class="wrapper">
+    <header>
+      <div class="image-container">
+        <img src="fonts/giphy.gif" alt="Profile Picture" class="profile-image">
+      </div>
+     
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+          <ul class="navbar">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="vote.html">Vote</a></li>
+            <li><a href="result.html">Result</a></li>
+            <li><a href="about.html">About</a></li>
+           
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <div class="containers">
+      <div class="cards">
+        <img src="fonts/me.JPG" alt="Profile Picture" style="width: 300px; height: 300px; object-fit: cover; border-radius: 50%;">
+        
+        <h1>About Me</h1>
+        <p>
+          My name is Bishal and I am currently studying BCA (Bachelor of Computer Applications). I have a passion for technology and enjoy learning about various aspects of computer science and software development.
+        </p>
+        <p>
+          I have developed this voting dapp using the Truffle framework, a powerful tool for building decentralized applications on the Ethereum blockchain. With the aim of promoting transparent and secure voting, I have leveraged the benefits of blockchain technology to create a robust platform.
+        </p>
+      </div>
+    </div>
+    
+    <footer class="footer">
+      <div class="mc">
+        &copy; 2023 Voting DApp. All rights reserved.
+      </div>
+    </footer>
+  </div>
+</body>
+
+</html>

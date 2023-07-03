@@ -1,66 +1,282 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Election Results</title>
 
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>Voting DApp Info</title>
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Custom CSS for the header/navbar */
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <div class="container" style="width: 650px;">
-      <div class="row">
-        <div class="col-lg-12">
-          <h1 class="text-center">Election Results</h1>
-          <hr/>
-          <br/>
-          <div id="loader">
-            <p class="text-center">Loading...</p>
-          </div>
-          <div id="content" style="display: none;">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">Votes</th>
-                </tr>
-              </thead>
-              <tbody id="candidatesResults">
-              </tbody>
-            </table>
-            <hr/>
-            <form onSubmit="App.castVote(); return false;">
-              <div class="form-group">
-                <label for="candidatesSelect">Select Candidate</label>
-                <select class="form-control" id="candidatesSelect">
-                </select>
-              </div>
-              <button type="submit" class="btn btn-primary">Vote</button>
-              <hr />
-            </form>
-            <p id="accountAddress" class="text-center"></p>
-          </div>
+    /* Custom CSS for the header/navbar */
+    header {
+    height: 180px;
+    padding: 15px 30px;
+    background: linear-gradient(305deg, #ff5722, #e91e63);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    display: flex;
+    align-content: stretch;
+    flex-wrap: nowrap;
+    align-items: flex-end;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+    .h2 {
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      /* Center align horizontally */
+      text-align: center;
+      /* Center align text */
+      font-family: "Arial", sans-serif;
+      /* Replace with your desired font */
+    }
+
+    .header-title {
+      font-size: 36px;
+      /* Adjust the font size as needed */
+      margin: 0;
+    }
+
+    footer {
+      flex-shrink: 0;
+      background-color: #ff5722;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+      margin-top: auto;
+      font-family: "Arial", sans-serif;
+      /* Replace with your desired font */
+      font-size: 14px;
+      /* Adjust the font size as needed */
+    }
+
+
+    /* CSS for the navigation bar */
+    ul.navbar {
+      list-style-type: none;
+      overflow: hidden;
+      background-color: transparent;
+      margin: 0;
+      padding: 0;
+      font-size: 25px;
+    }
+
+    ul.navbar li {
+      float: left;
+    }
+
+    ul.navbar li a {
+      display: block;
+      color: #fff;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    ul.navbar li a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 5px;
+    }
+
+    .navbar-nav .nav-link {
+      color: #fff;
+      font-size: 18px;
+      margin-left: 20px;
+      padding: 10px;
+      text-decoration: none;
+      
+    }
+
+    .nav-item {
+      text-align: right;
+    }
+
+    /* New CSS for the footer */
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+    }
+
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    footer {
+      flex-shrink: 0;
+      background-color: #ff5722;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+      margin-top: auto;
+    }
+
+    .footer-text {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .footer-link {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-link:hover {
+      color: #e91e63;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .social-icons a {
+      display: inline-block;
+      color: #fff;
+      margin: 0 5px;
+      transition: color 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #e91e63;
+    }
+
+    .mc {
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-container {
+      display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    margin-top: 50px;
+    }
+
+    .card {
+      width: 300px;
+      height: 400px;
+      border-radius: 5px;
+      padding: 35px;
+      margin: 10px;
+      text-align: center;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s;
+    }
+
+    .card img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+    }
+    .profile-image {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  transition: transform 0.3s;
+}
+
+.profile-image:hover {
+  transform: scale(1.1);
+}
+
+
+
+
+  </style>
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+  <div class="wrapper">
+    <header><div class="image-container">
+      <img src="fonts/giphy.gif" alt="Profile Picture" class="profile-image">
+    </div>
+     
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+          <ul class="navbar">
+            
+            <li><a href="index.html">Home</a></li>
+            <li><a href="vote.html">Vote</a></li>
+            <li><a href="result.html">Result</a></li>
+            <li><a href="about.html">About</a></li>
+            
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <div class="container">
+      <h1 style="margin-bottom: 50px; text-align: center;">Advantages of Voting DApp</h1>
+
+      <div class="card-container">
+        <div class="card">
+          <img src="./fonts/download.png" alt="Advantage 1">
+          <h3 class="card-title">Transparency</h3>
+          <p class="card-description">Voting DApps provide transparent and auditable election results, ensuring trust in the voting process.</p>
+        </div>
+        <div class="card">
+          <img src="./fonts/download.jpg" alt="Advantage 2">
+          <h3 class="card-title">Enhanced Security</h3>
+          <p class="card-description">Voting DApps use cryptographic algorithms to secure the voting process, making it highly secure and tamper-resistant.</p>
+        </div>
+        <div class="card">
+          <img src="./fonts/down.jpg" alt="Advantage 3">
+          <h3 class="card-title">Convenience and Accessibility</h3>
+          <p class="card-description">Voters can participate in the voting process from anywhere using their devices, making it convenient and accessible to all.</p>
+        </div>
+        <div class="card">
+          <img src="./fonts/images.jpg" alt="Advantage 4">
+          <h3 class="card-title">Efficiency and Cost Savings</h3>
+          <p class="card-description">Voting DApps automate the counting and verification process, saving time, resources, and reducing costs associated with traditional voting methods.</p>
         </div>
       </div>
     </div>
+   
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/web3.min.js"></script>
-    <script src="js/truffle-contract.js"></script>
-    <script src="js/app.js"></script>
-  </body>
+    <footer class="footer">
+      <div class="mc">
+        &copy; 2023 Voting DApp. All rights reserved.
+      </div>
+    </footer>
+  </div>
+  <!-- Bootstrap JS -->
+  <script src="js/bootstrap.min.js"></script>
+</body>
+
 </html>

@@ -1,3 +1,5 @@
+
+
 App = {
   web3Provider: null,
   contracts: {},
@@ -53,6 +55,11 @@ App = {
   },
 
   render: function() {
+    if (App.hasVoted) {
+      // Do not render candidates' information if the user has already voted
+      return;
+    }
+
     var electionInstance;
     var loader = $("#loader");
     var content = $("#content");
@@ -96,8 +103,9 @@ App = {
       }
       return electionInstance.voters(App.account);
     }).then(function(hasVoted) {
+      App.hasVoted = hasVoted;
       // Do not allow a user to vote
-      if(hasVoted) {
+      if (hasVoted) {
         $('form').hide();
       }
       loader.hide();

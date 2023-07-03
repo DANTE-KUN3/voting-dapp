@@ -1,4 +1,5 @@
-pragma solidity 0.4.20;
+// SPDX-License-Identifier: GPL-3.0
+pragma solidity ^0.8.19;
 
 contract Election {
     // Model a Candidate
@@ -21,22 +22,25 @@ contract Election {
         uint indexed _candidateId
     );
 
-    function Election () public {
-        addCandidate("Candidate 1");
-        addCandidate("Candidate 2");
+    constructor() {
+        addCandidate("Dante");
+        addCandidate("Vergil");
+        addCandidate("Kyria");
+        addCandidate("Nero");
+
     }
 
-    function addCandidate (string _name) private {
+    function addCandidate(string memory _name) private {
         candidatesCount ++;
         candidates[candidatesCount] = Candidate(candidatesCount, _name, 0);
     }
 
-    function vote (uint _candidateId) public {
+    function vote(uint _candidateId) public {
         // require that they haven't voted before
-        require(!voters[msg.sender]);
+        require(!voters[msg.sender], "This account has already voted.");
 
         // require a valid candidate
-        require(_candidateId > 0 && _candidateId <= candidatesCount);
+        require(_candidateId > 0 && _candidateId <= candidatesCount, "Invalid candidate ID.");
 
         // record that voter has voted
         voters[msg.sender] = true;
@@ -45,6 +49,6 @@ contract Election {
         candidates[_candidateId].voteCount ++;
 
         // trigger voted event
-        votedEvent(_candidateId);
+        emit votedEvent(_candidateId);
     }
 }
